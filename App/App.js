@@ -6,6 +6,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Login from './pages/Login'
 import Splash from './pages/Splash';
 import Register from './pages/Register';
+import Home from './pages/Home'
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
       screenOptions={{ headerShown: false}}>
         <Stack.Screen name = "Login" component={Login} />
         <Stack.Screen name = "Register" component={Register} />
+        <Stack.Screen name = "Home" component={Home} />
       </Stack.Navigator>}
     </NavigationContainer>
   );

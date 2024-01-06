@@ -41,6 +41,8 @@ const Register = ({navigation}) => {
                 <TextInput
                     value={email}
                     style={styles.inputText}
+                    textContentType='emailAddress'
+                    keyboardType='email-address'
                     placeholder='Enter Email Here'
                     placeholderTextColor={'#AFAFAF'}
                     onChangeText={email => setEmail(email)}
@@ -48,7 +50,9 @@ const Register = ({navigation}) => {
                 />
                 <TextInput
                     value={password}
+                    secureTextEntry={true}
                     style={styles.inputText}
+                    textContentType='password'
                     placeholder='Enter Password Here'
                     placeholderTextColor={'#AFAFAF'}
                     onChangeText={password => setPassword(password)}

@@ -41,21 +41,25 @@ const Login = ({navigation}) => {
                 <TextInput
                     value={email}
                     style={styles.inputText}
-                    placeholder='Enter Email Here'
+                    textContentType='emailAddress'
+                    keyboardType='email-address'
+                    placeholder='Email'
                     placeholderTextColor={'#AFAFAF'}
                     onChangeText={email => setEmail(email)}
-                    
                 />
                 <TextInput
                     value={password}
                     style={styles.inputText}
-                    placeholder='Enter Password Here'
+                    secureTextEntry={true}
+                    textContentType='password'
+                    placeholder='Password'
                     placeholderTextColor={'#AFAFAF'}
                     onChangeText={password => setPassword(password)}
                     
                 />
             </View>
-            <TouchableOpacity style={styles.loginBtn}>
+            <TouchableOpacity style={styles.loginBtn}
+            onPress={() => navigation.navigate('Home')}>
                 <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
             <View style={styles.actions}>
