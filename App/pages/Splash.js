@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { View, Image, StyleSheet, Animated } from 'react-native'
+import { View, StyleSheet, Animated } from 'react-native'
 
 const Splash = () => {
-    const imageScale = new Animated.Value(0.2);
-    const fade = new Animated.Value(1);
+    const imageScale = new Animated.Value(0.5);
+    const fade = new Animated.Value(0.5);
 
     Animated.timing(fade, {
         toValue:0,
@@ -13,7 +13,7 @@ const Splash = () => {
     }).start()
 
     Animated.timing(imageScale, {
-        toValue: 0.8,
+        toValue: 1.2,
         duration: 3000,
         useNativeDriver: true
     }).start();
@@ -21,8 +21,8 @@ const Splash = () => {
     return (
         <View style = {styles.container}>
             <Animated.Image
-            source={require('../assets/Logo.png')}
-            style={[styles.Image, { transform: [{ scale: imageScale }] }, { opacity: fade }]}
+                source={require('../assets/Logo.png')}
+                style={[styles.image, { transform: [{ scale: imageScale }] }, { opacity: fade }]}
             />
         </View>
     )
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     image: {
-        width: 300,
-        height: 300
+        width: 600,
+        height: 600
     }
 })
 

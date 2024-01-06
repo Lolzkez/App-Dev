@@ -7,6 +7,11 @@ import Login from './pages/Login'
 import Splash from './pages/Splash';
 import Register from './pages/Register';
 import Home from './pages/Home'
+import Market from './pages/Market'
+import MyBooks from './pages/MyBooks'
+import Settings from './pages/Settings'
+import Forgot from './pages/Forgot';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,15 +22,31 @@ export default function App() {
       setIsLoading(false)
     }, 2000)
   }, [])
-
+  
   return (
     <NavigationContainer>
       {isLoading ? <Splash /> : <Stack.Navigator
       screenOptions={{ headerShown: false}}>
         <Stack.Screen name = "Login" component={Login} />
         <Stack.Screen name = "Register" component={Register} />
-        <Stack.Screen name = "Home" component={Home} />
+        <Stack.Screen name = "Home" component={Tabs} />
+        <Stack.Screen name = "Forgot" component={Forgot} />
       </Stack.Navigator>}
     </NavigationContainer>
   );
+}
+
+const Tab = createBottomTabNavigator()
+
+function Tabs() {
+  return(
+    <NavigationContainer independent={true}>
+      <Tab.Navigator>
+        <Tab.Screen name = "Home" component={Home} />
+        <Tab.Screen name = "Market" component={Market} />
+        <Tab.Screen name = "My Books" component={MyBooks} />
+        <Tab.Screen name = "Settings" component={Settings} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  )
 }

@@ -18,10 +18,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 
-const Home = ({navigation}) => {
+const MyBooks = ({navigation}) => {
     return (
         <View style={styles.eh}>
-            <Text>Home</Text>
+            <Text>My Books</Text>
         </View>
     )
 }
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Home
+export default MyBooks

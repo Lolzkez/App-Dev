@@ -14,13 +14,12 @@ import {
 } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import {Montserrat_500Medium} from '@expo-google-fonts/montserrat'
+import signup from '../assets/Signup.png';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import logo from '../assets/Logo.png';
 
-const Login = ({navigation}) => {
+const Forgot = ({navigation}) => {
     const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('')
     const [fontsLoaded] = useFonts({
         Montserrat_500Medium
       });
@@ -34,44 +33,25 @@ const Login = ({navigation}) => {
       style={styles.bigContainer}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-            <View style={styles.logoView}>
-                <Image source={logo} resizeMode='contain' style={styles.logo} />
+            <View style={styles.forgot}>
+                <Text style={styles.title}>Forgot Password?</Text>
             </View>
+            <Text fontFamily={Montserrat_500Medium} marginBottom={25}>Enter Email here to reset your password:</Text>
             <View style={styles.inputView}>
                 <TextInput
                     value={email}
                     style={styles.inputText}
                     textContentType='emailAddress'
                     keyboardType='email-address'
-                    placeholder='Email'
+                    placeholder='Enter Email Here'
                     placeholderTextColor={'#AFAFAF'}
                     onChangeText={email => setEmail(email)}
-                />
-                <TextInput
-                    value={password}
-                    style={styles.inputText}
-                    secureTextEntry={true}
-                    textContentType='password'
-                    placeholder='Password'
-                    placeholderTextColor={'#AFAFAF'}
-                    onChangeText={password => setPassword(password)}
                     
                 />
             </View>
-            <TouchableOpacity style={styles.loginBtn}
-            onPress={() => navigation.navigate('Home')}>
-                <Text style={styles.loginText}>Login</Text>
+            <TouchableOpacity style={styles.submitBtn} onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.submitText}>Submit</Text>
             </TouchableOpacity>
-            <View style={styles.actions}>
-                <TouchableOpacity style={{marginHorizontal: 15}}
-                onPress={() => navigation.navigate('Forgot')}>
-                    <Text style={styles.forgot}>Forgot Password?</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                onPress={() => navigation.navigate('Register')}>
-                    <Text style={styles.reg}>Register</Text>
-                </TouchableOpacity>
-            </View>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -102,6 +82,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         justifyContent: 'center',
         padding: 20,
+        marginTop: 20
       },
       inputText: {
         height: 50,
@@ -110,19 +91,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         padding: 10,
-        marginBottom: 10,
       },
-      reg: {
-        color: '#000000',
-        fontWeight: '500',
-        fontFamily: "Montserrat_500Medium"
-      },
-      forgot: {
-        color: '#000000',
-        fontWeight: '500',
-        fontFamily: "Montserrat_500Medium"
-      },
-      loginBtn: {
+      submitBtn: {
         width: '80%',
         backgroundColor: '#000000',
         borderRadius: 5,
@@ -133,29 +103,30 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontFamily: "Montserrat_500Medium"
       },
-      loginText: {
+      submitText: {
         color: '#ffffff',
         fontWeight: '800',
         fontFamily: "Montserrat_500Medium"
-
       },
       actions: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
       },
-      logoView: {
+      forgot: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         marginBottom: 15,
         marginTop: 0,
       },
-      logo: {
-        marginBottom: 50,
-        width: 300,
-        height: 300,
-      },
+      title: {
+        color: '#000000',
+        fontSize: 40,
+        fontWeight: '900',
+        fontFamily: "Montserrat_500Medium",
+        margin: 7
+      }
+
 })
 
-
-export default Login
+export default Forgot
