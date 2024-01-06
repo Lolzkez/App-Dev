@@ -7,6 +7,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Platform,
+  Keyboard
 } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import {Montserrat_500Medium} from '@expo-google-fonts/montserrat'
@@ -25,6 +29,10 @@ const Register = ({navigation}) => {
       }
 
     return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.bigContainer}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
             <View style={styles.logoView}>
                 <Image source={signup} resizeMode='contain' style={styles.logo} />
@@ -50,10 +58,15 @@ const Register = ({navigation}) => {
                 <Text style={styles.regText}>Sign Up</Text>
             </TouchableOpacity>
         </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
     )
     }
 
 const styles = StyleSheet.create({
+    bigContainer: {
+      flex: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
