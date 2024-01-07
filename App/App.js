@@ -12,6 +12,7 @@ import MyBooks from './pages/MyBooks'
 import Settings from './pages/Settings'
 import Forgot from './pages/Forgot';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Iconify } from 'react-native-iconify'
 
 const Stack = createNativeStackNavigator();
 
@@ -41,7 +42,28 @@ const Tab = createBottomTabNavigator()
 function Tabs() {
   return(
     <NavigationContainer independent={true}>
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          
+          if (route.name === "Home") {
+            if (focused) {return <Iconify icon={'clarity:home-solid'} size={size} color={color} />}
+            else {return <Iconify icon={'clarity:home-line'} size={size} color={color} />}
+          }
+          else if (route.name === "Market") {
+            if (focused) {return <Iconify icon={'clarity:book-solid'} size={size} color={color} />}
+            else {return <Iconify icon={'clarity:book-line'} size={size} color={color} />}
+          }
+          else if (route.name === "My Books") {
+            if (focused) {return <Iconify icon={'clarity:bookmark-solid'} size={size} color={color} />}
+            else {return <Iconify icon={'clarity:bookmark-line'} size={size} color={color} />}
+          }
+          else if (route.name === "Settings") {
+            if (focused) {return <Iconify icon={'clarity:settings-solid'} size={size} color={color} />}
+            else {return <Iconify icon={'clarity:settings-line'} size={size} color={color} />}
+          }
+        },
+      })}>
         <Tab.Screen name = "Home" component={Home} />
         <Tab.Screen name = "Market" component={Market} />
         <Tab.Screen name = "My Books" component={MyBooks} />
