@@ -13,6 +13,7 @@ import Settings from './pages/Settings'
 import Forgot from './pages/Forgot';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Iconify } from 'react-native-iconify'
+import Cart from './pages/Cart';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App() {
         <Stack.Screen name = "Register" component={Register} />
         <Stack.Screen name = "Home" component={Tabs} />
         <Stack.Screen name = "Forgot" component={Forgot} />
+        <Stack.Screen name = "Cart" component={Cart} />
       </Stack.Navigator>}
     </NavigationContainer>
   );
@@ -44,7 +46,6 @@ function Tabs() {
     <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
           
           if (route.name === "Home") {
             if (focused) {return <Iconify icon={'clarity:home-solid'} size={size} color={color} />}
@@ -64,10 +65,10 @@ function Tabs() {
           }
         },
       })}>
-        <Tab.Screen name = "Home" component={Home} />
-        <Tab.Screen name = "Market" component={Market} />
-        <Tab.Screen name = "My Books" component={MyBooks} />
-        <Tab.Screen name = "Settings" component={Settings} />
+        <Tab.Screen name = "Home" component={Home} options={{headerShown:false}}/>
+        <Tab.Screen name = "Market" component={Market} options={{headerShown:false}} />
+        <Tab.Screen name = "My Books" component={MyBooks} options={{headerShown:false}} />
+        <Tab.Screen name = "Settings" component={Settings} options={{headerShown:false}} />
       </Tab.Navigator>
     </NavigationContainer>
   )
