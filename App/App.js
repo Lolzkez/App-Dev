@@ -31,7 +31,7 @@ export default function App() {
       screenOptions={{ headerShown: false}}>
         <Stack.Screen name = "Login" component={Login} />
         <Stack.Screen name = "Register" component={Register} />
-        <Stack.Screen name = "Home" component={Tabs} />
+        <Stack.Screen name = "HomeTabs" component={Tabs} />
         <Stack.Screen name = "Forgot" component={Forgot} />
         <Stack.Screen name = "Cart" component={Cart} />
       </Stack.Navigator>}
@@ -43,10 +43,10 @@ const Tab = createBottomTabNavigator()
 
 function Tabs() {
   return(
-    <NavigationContainer independent={true}>
       <Tab.Navigator screenOptions={({ route }) => ({
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: 'gray',
         tabBarIcon: ({ focused, color, size }) => {
-          
           if (route.name === "Home") {
             if (focused) {return <Iconify icon={'clarity:home-solid'} size={size} color={color} />}
             else {return <Iconify icon={'clarity:home-line'} size={size} color={color} />}
@@ -70,6 +70,5 @@ function Tabs() {
         <Tab.Screen name = "My Books" component={MyBooks} options={{headerShown:false}} />
         <Tab.Screen name = "Settings" component={Settings} options={{headerShown:false}} />
       </Tab.Navigator>
-    </NavigationContainer>
   )
 }
